@@ -8,7 +8,9 @@ interface Documentable{
 	public function getContent();	
 }
 
-	
+/**
+ * class HtmlDocument to get html data
+ */
 class HtmlDocument implements Documentable{
 	protected $url;
 	public function __construct($url){
@@ -30,7 +32,9 @@ class HtmlDocument implements Documentable{
 	}
 }
 
-
+/**
+ * the class StreamDocument to get stream data
+ */
 class StreamDocument implements Documentable{
 	protected $resource;
 	protected $buff;
@@ -54,6 +58,9 @@ class StreamDocument implements Documentable{
 	}
 }
 
+/**
+ * the class CommandOutputDocument to get command data
+ */
 class CommandOutputDocument implements Documentable{
 	protected $command;
 	public function __construct($command){
@@ -67,7 +74,10 @@ class CommandOutputDocument implements Documentable{
 		return mb_convert_encoding($data,"UTF8","GBK");
 	}
 }
-	
+
+/**
+ * the class DocumentStore to manage data
+ */
 class DocumentStore{
 	protected $data = [];
 
@@ -108,6 +118,6 @@ fwrite($res,$ste);
 
 fclose($res);
 
-// echo the datas
+// echo the datas 
 print_r($datas);
 ?>
